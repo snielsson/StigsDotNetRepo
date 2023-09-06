@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Stig Schmidt Nielsson",
+  "classifications": [ "Stig", "Files" ],
+  "identity": "https://github.com/snielsson/StigsDotnetTemplates/StigsClassLibTemplateWithTests",
+  "name": "Stig's solution configuration files to set up analyzers, configuration etc. for a solution. Execute in the directory with the .sln file.",
+  "shortName": "ssf",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  }
+}

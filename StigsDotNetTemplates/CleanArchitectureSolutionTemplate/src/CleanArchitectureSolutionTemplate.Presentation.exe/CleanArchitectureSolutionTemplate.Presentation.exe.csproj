@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>CleanArchitectureSolutionTemplate.Presentation</RootNamespace>
+        <AssemblyName>CleanArchitectureSolutionTemplate.exe</AssemblyName>
+        <PublishProfile>DefaultContainer</PublishProfile>
+<!--        <PublishTrimmed>false</PublishTrimmed>-->
+<!--        <PublishSingleFile>true</PublishSingleFile>-->
+<!--        <ContainerBaseImage>mcr.microsoft.com/dotnet/runtime:7.0-alpine</ContainerBaseImage>-->
+    </PropertyGroup>
+    <ItemGroup>
+        <ContainerPort Include="5000" Type="tcp" />
+        <ContainerEnvironmentVariable Include="ASPNETCORE_URLS" Value="http://+:5000" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+        <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CleanArchitectureSolutionTemplate.Infrastructure.System\CleanArchitectureSolutionTemplate.Infrastructure.System.csproj" />
+      <ProjectReference Include="..\CleanArchitectureSolutionTemplate.Application\CleanArchitectureSolutionTemplate.Application.csproj" />
+      <ProjectReference Include="..\CleanArchitectureSolutionTemplate.Domain\CleanArchitectureSolutionTemplate.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

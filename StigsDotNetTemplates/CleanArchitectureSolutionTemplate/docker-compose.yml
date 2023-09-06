@@ -1,0 +1,6 @@
+﻿services:
+  cleanarchitecturesolutiontemplate.presentation.exe:
+    image: cleanarchitecturesolutiontemplate.presentation.exe
+    build:
+      context: .
+      dockerfile: src/CleanArchitectureSolutionTemplate.Presentation.exe/Dockerfile
