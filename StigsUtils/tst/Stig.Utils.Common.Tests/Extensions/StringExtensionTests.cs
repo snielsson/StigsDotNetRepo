@@ -1,10 +1,10 @@
-// Copyright © 2023 TradingLens. All Rights Reserved.
+// Copyright © 2023 Stig Schmidt Nielsson. All Rights Reserved. This file is open source and distributed under the MIT license.
 
 using FluentAssertions;
-using Stigs.Utils.Common.Extensions;
+using Stig.Utils.Common.Extensions;
 using Xunit;
 
-namespace Stigs.Utils.Common.Tests.Extensions;
+namespace Stig.Utils.Common.Tests.Extensions;
 
 public class StringExtensionTests {
 
@@ -23,5 +23,24 @@ public class StringExtensionTests {
       Add("this ___is___ another ___test___ string",new [] { (5,8),(22,10) } );
       Add("this ___is________yet_____ another ___test___ string",new [] { (5,8),(13,11),(35,10) } );
     }
+  }
+
+  [Theory]
+  [InlineData("abcde",null,null,"abcde")]
+  [InlineData("abcde","ab",null,"cde")]
+  [InlineData("abcde",null,"de","abc")]
+  [InlineData("abcde","ab","de","c")]
+  [InlineData("abcde","abx","de","abc")]
+  [InlineData("abcde","abx","de","abc",false)]
+  [InlineData("abcde","abx","de","c",true)]
+  [InlineData("abcde","ab","dex","cde")]
+  [InlineData("abcde","ab","xde","cde",null,false)]
+  [InlineData("abcde","ab","xde","c",null,true)]
+  [InlineData("abcde","abc","cde","de",null,null)]
+  [InlineData("abcde","abc","cde","",null,true)]
+  [InlineData("abcde","abcdef",null,"abcde")]
+  [InlineData("abcde","abcdef",null,"",true)]
+  public void TrimStringWorks(string input, string? trimStart, string? trimEnd, string expected, bool? allowPartialTrimStart = null, bool? allowPartialTrimEnd = null) {
+    input.TrimString(trimStart, trimEnd, allowPartialTrimStart, allowPartialTrimEnd).Should().Be(expected);
   }
 }
